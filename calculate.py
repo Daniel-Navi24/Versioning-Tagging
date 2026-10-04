@@ -1,5 +1,4 @@
 def calculate(operation, operands):
-    """Takes a list of operands instead of separate a, b parameters (breaking change)."""
     if operation == 'add':
         return {"status": "ok", "result": sum(operands)}
     elif operation == 'subtract':
@@ -16,8 +15,12 @@ def calculate(operation, operands):
                 return {"status": "error", "message": "Cannot divide by zero"}
             result /= n
         return {"status": "ok", "result": result}
+    elif operation == 'modulo':
+        if operands[1] == 0:
+            return {"status": "error", "message": "Cannot modulo by zero"}
+        return {"status": "ok", "result": operands[0] % operands[1]}
     else:
         return {"status": "error", "message": "Unsupported operation"}
 
 if __name__ == "__main__":
-    print(calculate('add', [5, 3]))
+    print(calculate('modulo', [10, 3]))
