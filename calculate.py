@@ -1,4 +1,12 @@
 def calculate(operation, operands):
+    if not isinstance(operands, list):
+        return {"status": "error", "message": "Operands must be a list"}
+    if len(operands) < 2:
+        return {"status": "error", "message": "At least two operands required"}
+    for n in operands:
+        if not isinstance(n, (int, float)):
+            return {"status": "error", "message": "All operands must be numbers"}
+
     if operation == 'add':
         return {"status": "ok", "result": sum(operands)}
     elif operation == 'subtract':
@@ -23,4 +31,5 @@ def calculate(operation, operands):
         return {"status": "error", "message": "Unsupported operation"}
 
 if __name__ == "__main__":
-    print(calculate('modulo', [10, 3]))
+    print(calculate('add', [5, 3]))
+    print(calculate('add', 'bad'))
