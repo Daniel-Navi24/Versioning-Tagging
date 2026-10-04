@@ -9,12 +9,11 @@ def calculate(operation, a, b):
         if b == 0:
             return "Error: Cannot divide by zero"
         return a / b
+    elif operation == 'power':
+        return a ** b
     else:
         return "Error: Unsupported operation"
 
 if __name__ == "__main__":
     print(calculate('add', 5, 3))
-    print(calculate('subtract', 5, 3))
-    print(calculate('multiply', 5, 3))
-    print(calculate('divide', 5, 3))
-    print(calculate('divide', 5, 0))
+    print(calculate('power', 2, 3))
